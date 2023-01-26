@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/pull_layout}">
+
+<div layout:fragment="content">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script th:inline="javascript">
+
+		$(document).ready(function () {
+			var NullMessage = [[${NullMessage}]];
+			if (NullMessage != null) {
+				alert(NullMessage);
+			}
+		});
+	</script>
+
+
+	<div class="basket">
+		<div class="basket_header">
+			<i class="fa-solid fa-cart-shopping fa-2x">장바구니</i>
+			<div class="basket_contents">
+				<div class="basket_shopping_header">
+					<span class="product1">쇼핑상품</span>
+				</div>
+				<div class="basket_shopping_price">
+					<span class="product2">상품금액</span>
+				</div>
+				<div class="basket_shopping_product">
+					<span>주문목록삭제</span>
+				</div>
+			</div>
+
+			<!-- 반복문 시작 -->
+
+
+			<div th:each="plist : ${productList}">
+				<div class="basket_item">
+
+					<div class="basket_item_img">
+						<img th:src="${plist.img}">
+					</div>
+					<div class="basket_item_name">
+						<label>상품명: <span th:text="${plist.title}" class="title"></span>
+						</label>
+
+					</div>
+					<div class="basket_item_count">
+						<label>수량: <span th:text="${plist.EA}"></span>개
+						</label>
+					</div>
+					<div class="basket_item_price">
+						<label> <span th:text="${plist.price}"></span>원
+						</label>
+					</div>
+
+					<div class="basket_item_delete">
+						<div class="item_del">
+							<span th:text="${plist.title}" class="title" style="visibility: hidden"></span>
+							<span th:text="${plist.buyer}" class="buyer" style="visibility: hidden"></span>
+							<p>주문 목록 삭제</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<form th:action="@{/Payment/basket_remove}" method="post" class="data">
+				<input type="text" value="" id="title" name="title" style="visibility: hidden"> <input type="text"
+					value="" id="buyer" name="buyer" style="visibility: hidden">
+			</form>
+			<script>
+				$(function () {
+					$(".item_del").click(function () {
+						var title = $(this).find('.title').text();
+						var buyer = $(this).find('.buyer').text();
+
+						$("#title").val(title);
+						$("#buyer").val(buyer);
+						$(".data").submit();
+						alert("삭제 완료");
+
+					})
+				});
+			</script>
+
+
+			<!-- 반복문 끝 -->
+
+
+
+			<div class="basket_amount">
+				<div class="basket_total_product_price">
+					<label>총 합계 = <span th:text="${total_amount}"></span>
+					</label>
+					<!-- <span>+</span> <span>총 배송비:</span> <span>=</span>
+					<span>총 주문금액:</span> -->
+				</div>
+			</div>
+
+			<div class="basket_purchase">
+				<button type="button" onclick="location.href = '/'">계속 쇼핑하기</button>
+				<button type="button" class="product_buy_btn">구매하기</button>
+				<input type="text" th:value="${titles}" id="titles" style="visibility: hidden"> <input type="text"
+					th:value="${total_amount}" id="price" style="visibility: hidden">
+				<input type="number" th:value="${counts}" id="count" style="visibility: hidden"> <input type="text"
+					id="imgs" th:value="${firstimg}" style="visibility: hidden">
+				<script>
+					$(document).on("click", ".product_buy_btn", function () {
+
+						var title = $('#titles').val();
+						var price = $('#price').val();
+						var img = $('#imgs').val();
+						var count = $('#count').val();
+
+						console.log(title);
+						console.log(price);
+						console.log(img);
+						console.log(count);
+						$.ajax({
+							url: '/Payment/kakaopay.cls',
+							dataType: 'json',
+							data: {
+								title: title,
+								price: price,
+								img: img,
+								count: count
+							},
+							success: function (data) {
+
+								window.open(data.next_redirect_pc_url);
+							},
+							error: function (error) {
+								alert("결제url 불러오기에 실패하였습니다.");
+							}
+						})
+					});
+				</script>
+
+			</div>
+
+		</div>
+	</div>
+</div>

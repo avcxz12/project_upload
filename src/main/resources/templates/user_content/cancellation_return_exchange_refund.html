@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/pull_layout}">
+
+
+<div layout:fragment="content">
+	<!-- 헤더 부분 시작 -->
+	<div class="mypage">
+		<div class="mypage_form">
+			<div class="mypage_header">
+				<div class="mypage_header_btn">
+					<h1>My Page</h1>
+				</div>
+				<div class="mypage_order_list" onclick="location.href ='/mypage'">
+					<p class="mypage_btn">주문내역</p>
+				</div>
+				<div class="mypage_cancel_return" onclick="location.href ='/User/cancellation_return_exchange_refund'">
+					<p class="mypage_btn">문의하기(취소 / 기타)</p>
+				</div>
+				<div class="mypage_inquiry" onclick="location.href ='/Payment/basket_form'">
+					<p class="mypage_btn">장바구니</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 헤더 부분 끝 -->
+
+	<div class="cancellation">
+		<div class="cancellation_form">
+			<div class="cancellation_header">
+				<h1>문의하기(취소 / 기타)</h1>
+			</div>
+
+
+			<!-- 반복문 시작 -->
+			<div class="cancellation_return">
+				<div class="cancellation_return_receipt_date">
+					<p>반품접수일:변수</p>
+					<p>|</p>
+					<p>주문일 : 변수</p>
+				</div>
+				<div class="cancellation_return_product">
+					<div class="cancellation_return_product_name"><br>
+						<p>상품명</p><br>
+						<p>구입한 자세한 내용</p>
+					</div>
+					<div class="cancellation_return_product_count_price">
+						<p class="count">상품수량</p>
+						<p class="price">총 상품금액</p>
+					</div>
+					<div class="cancellation_return_product_return">
+						<p>취소완료</p>
+						<p>or</p>
+						<p>반품완료</p>
+					</div>
+				</div>
+			</div>
+			
+			<!-- 반복문 끝 -->
+			
+		</div>
+	</div>
+</div>

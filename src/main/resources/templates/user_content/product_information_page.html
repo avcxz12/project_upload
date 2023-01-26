@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/pull_layout}">
+
+<div layout:fragment="content">
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<div class="product_information">
+		<div class="img_container">
+			<img th:src="${plist.img}"/>
+		</div>
+
+
+		<div class="product_right">
+			<div class="product_information_header">
+				<div class="product_name">
+					<h1><span th:text="${plist.title}"></span></h1>
+					<span th:text="${plist.userid}"></span>
+				</div>
+			</div>
+			<div class="product_information_details">
+				<div class="product_price">
+				</div>
+
+				<div class="product_size">
+					남은 수량 : <span th:text="${plist.EA}"></span><br />
+					가격 : <span th:text="${#numbers.formatInteger(plist.price, 3, 'COMMA')}" >
+					</span>
+					
+					<div th:if="${nocomment==null}">
+					평점 :<span th:text="${#numbers.formatDecimal(star_avs,1,2)}" ></span>
+					<p th:text="${summary}"></p>
+					</div>
+					<div th:unless="${nocomment==null}"></div>
+					<p th:text="${nocomment}"></p>
+					
+					
+				</div>
+				<div class="product_color">
+					<span th:text="${plist.mainmenu}" style="visibility:hidden"></span><br />
+					<input type="text" id="username" name="username" th:value="${username}" readonly style="visibility:hidden">
+					<input id="guest" th:value="${guest}" style="visibility:hidden">
+				</div>
+			</div>
+			<div class="product_btn">
+				<div class="product_quantity">
+					<input type="number" id="count" value="1" min="1" readonly />
+					<button type="button" id="upcount">▲</button>
+					<button type="button" id="downcount">▼</button>
+
+				</div>
+				<div class="product_shopping_btn">	
+				<input type="number" id="price" th:value="${plist.price}" style="visibility:hidden">
+					<input type="number" id="ea" th:value="${plist.EA}" style="visibility:hidden">
+					<input id="mainmenu" th:value="${plist.mainmenu}" style="visibility:hidden">
+					<input id="id" th:value="${plist.userid}" style="visibility:hidden">
+					<input id="img" th:value="${plist.img}" style="visibility:hidden">
+					<input id="title" th:value="${plist.title}" style="visibility:hidden">
+
+					<button type="button" class="product_cart_btn">장바구니</button>
+					<script>
+						$(document).on("click", ".product_cart_btn", function () {
+
+							var id = $('#id').val();
+							var mainmenu = $('#mainmenu').val();
+							var title = $('#title').val();
+							var price = $('#price').val();
+							var img = $('#img').val();
+							var count = $('#count').val();
+							var username = $('#username').val();
+							var guest = $('#guest').val();
+
+							if (guest) {
+								alert("회원가입이나 로그인 후 진행해주세요.");
+								location.href = "/User/login_form";
+							}
+							else {
+								alert("구매수량은=" + count);
+
+								$.ajax({
+									url: '/Payment/savebasket',
+									type: 'post',
+									data: {id: id, mainmenu: mainmenu, title: title, price: price, img: img, count: count, username: username},
+									success: function (result) {alert("장바구니에 담겨졌습니다.")},
+									error: function (result) {alert("장바구니에 안담겼습니다.")}
+								})
+							}
+						});
+					</script>
+					<script>
+
+						$("#upcount").click(function () {
+							var count = $("#count").val();
+							$("#count").val(++count);
+						});
+
+						$("#downcount").click(function () {
+
+							var count = $("#count").val();
+							if (count == 1) {
+								$("#count").val(count);
+							}
+							else {
+								$("#count").val(--count);
+							}
+						});
+					</script>
+					<button class="product_buy_btn">구매하기</button>
+					<script>
+						$(document).on("click", ".product_buy_btn", function () {
+
+							var title = $('#title').val();
+							var id = $('#id').val();
+							var price = $('#price').val();
+							var img = $('#img').val();
+							var count = $('#count').val();
+							count = Number(count);
+							var ea = $('#ea').val();
+							ea = Number(ea);
+
+							var guest = $('#guest').val();
+							if (guest == "guest") {
+								alert("회원가입이나 로그인 후 진행해주세요.");
+								location.href = "/User/login_form";
+							}
+							if(ea<count){
+								alert("수량이 초과됐습니다.");
+							}
+							else{
+
+							$.ajax({
+								url: '/Payment/kakaopay.cls',
+								dataType: 'json',
+								data: {title: title, price: price, img: img, count: count, ea:ea,id:id},
+								success: function (data) {
+									window.open(data.next_redirect_pc_url);
+								},
+								error: function (error) {
+									alert("결제url 불러오기에 실패하였습니다.");
+								}
+							})
+							}
+						});
+					</script>
+
+				</div>
+			</div>
+		</div>
+
+		<!--  여기서부터는 댓글 관련 기능 구현 창입니다. -->
+		<div class="coment_area">
+			<div th:if="${payplz!=null}">
+
+				<div class="comment_hi">
+					<h1 th:text=${payplz}></h1>
+				</div>
+			</div>
+			<div th:if="${payplz==null} and ${guest==null}">
+				<div class="show_userid">
+					<input type="text" th:value="${username}" name="userid" id="username" class="username" readonly>
+					<!-- 해당 div 에는 유저의 이름 이 들어갈 예정입니다. -->
+					<input type="text" th:value="${plist.img}" name="coment_img" style="visibility:hidden">
+
+				</div>
+
+
+				<div class="show_usercoment">
+					<!-- 해당 div 에는 유저의 상품평이 들어갈 공간입니다. -->
+
+
+					<input type=text name="user_coment" id="user_comment" class="user_text">
+					<span class="star_box">
+						이 상품에 대한 점수를 주세요! <span class="star">★★★★★
+							<span>★★★★★</span>
+							<input type="range" oninput="starRating(this)" name="submit_star" id="submit_star" value="1" step="1" min="1" max="5">
+						</span>
+						<script>
+							const starRating = (target) => {
+								document.querySelector(`.star span`).style.width = `${target.value * 20}%`;
+							}
+
+						</script>
+					</span>
+				</div>
+				<button type="button" class="comment_saving_btn">등록</button>
+
+				<script>
+					$(document).on("click", ".comment_saving_btn", function () {
+						var username = $('#username').val();
+						var coment_img = $('#img').val();
+						var user_coment = $('#user_comment').val();
+						var submit_star = $('#submit_star').val();
+						var title_c = $('#title').val();
+
+						$.ajax({
+							url: '/Product/pr_comment',
+							dataType: 'json',
+							data: {coment_img: coment_img, user_coment: user_coment, submit_star: submit_star},
+							success: function (data) {
+								alert("댓글이 정상적으로 등록되었습니다.");
+								window.location.reload();
+							},
+							error: function (error) {
+							}
+						})
+					});
+
+				</script>
+			</div>
+			<!-- 댓글표시 -->
+			<div th:each="comment : ${comment}" class="comment_hi">
+				유저 : <span th:text=${comment.userid}></span>
+				별점 : <span th:if=${comment.rating==1} class="st_Color">★</span>
+				<span th:if=${comment.rating==2} class="st_Color">★★</span>
+				<span th:if=${comment.rating==3} class="st_Color">★★★</span>
+				<span th:if=${comment.rating==4} class="st_Color">★★★★</span>
+				<span th:if=${comment.rating==5} class="st_Color">★★★★★</span>
+				<span th:text=${comment.answer} class="user_answer_dec"></span>
+				<span th:text=${comment.daytime} class="user_day_dec"></span>
+
+
+				<span th:text=${comment.img} style="visibility:hidden"></span>
+			</div>
+			</div>
+
+		</div>
+
+
+	</div>
+
+</html>

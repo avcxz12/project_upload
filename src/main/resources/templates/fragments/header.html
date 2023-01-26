@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<div th:fragment="header">
+	<div class="header">
+		<div class="product_info">
+		<form action="/User/inquiry_resp" method="get"class="form_margin">
+		<label sec:authorize="hasRole('USER')">판매자 신청
+			<input type="submit" th:name="result" th:value="apply" style="visibility: hidden"/>
+			</label>
+		</form>
+			<a onclick="window.open('/Product/product_reg_form')" sec:authorize="hasRole('MANAGER')">상품 등록</a>
+		</div>
+		<div class="contaner">
+			<div class="logo">
+				<img src="/img/logo.png" onclick="location.href='/'">
+			</div>
+			<div class="search_area">
+				<form action="/Product/Product_List" method="get"
+					class="form_margin">
+					<input type="text" class="search_bar" name="search_bar">
+					<button type="submit" class="search_btn">검색</button>
+				</form>
+			</div>
+			<div class="mypage_area">
+				<div class="mypage_btn_area">
+					<i class="fa-regular fa-user" id="mypage_btn"
+						onclick="location.href ='/mypage'"></i>
+				</div>
+
+				<div class="basket_btn_area">
+					<i class="fa-solid fa-cart-shopping" id="basket_btn"
+						onclick="location.href ='/Payment/basket_form'"></i>
+
+				</div>
+				<div class="log_in_out_area">
+					<button class="button" type="button"
+						onclick="location.href='/login_form'" id="login_btn"
+						sec:authorize="isAnonymous()">로그인</button>
+					<button class="button" type="button"
+						onclick="location.href='/sign_up_form'" id="sign_up_btn"
+						sec:authorize="isAnonymous()">회원가입</button>
+
+					<!-- 고객만 볼수 있는  버튼 -->
+					<th:block sec:authorize="hasRole('USER')">
+						<label th:text="${name}"></label><label>님 안녕하세요</label>
+						<button type="button" onclick="location.href='/logout_form'"
+							class="user_btn">로그아웃</button>
+						<button class="user_btn" onclick="location.href='/modify_form'"
+							type="button">정보수정</button>
+					</th:block>
+
+					<!-- 아래까지가 내가 볼수있는 메뉴 -->
+					<th:block sec:authorize="hasRole('ADMIN')">
+						어드민님<p>안녕하세요</p>
+						<button class="admin_btn" onclick="location.href='/logout_form'">관리자 로그아웃</button>
+						<button class="admin_btn" onclick="location.href ='/User/inquiry_form'">관리자 메뉴</button>
+					</th:block>
+
+					<!-- 다른 고객 관리자 메뉴 -->
+					<th:block sec:authorize="hasRole('MANAGER')">
+						<p>판매자님 어서오세요</p>
+						<button type="button" onclick="location.href='/logout_form'"
+							class="user_btn">로그아웃</button>
+						<button class="user_btn" onclick="location.href='/modify_form'"
+							type="button">정보수정</button>
+					</th:block>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+</html>

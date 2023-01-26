@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/body_only_layout}">
+
+
+
+
+<!-- <th:block layout:fragment="content">  -->
+<div layout:fragment="content">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script th:inline="javascript">
+
+		$(document).ready(function () {
+			var errorMessage = [[${errorMessage}]];
+			if (errorMessage != null) {
+				alert(errorMessage);
+			}
+		});
+	</script>
+
+	<div class="login">
+		<img class="login_logo" src="/img/logo.png">
+		<form action="/User/login_form" method="post">
+			<div class="login_form">
+				<div class="login_area">
+					<div class="userid">
+						<i class="fa-solid fa-lock fa-2x fa-fw"></i>
+						<input class="id" type="text" name="id" placeholder="아이디">
+					</div><br>
+
+					<div class="userpassword">
+						<i class="fa-solid fa-key fa-2x fa-fw"></i>
+						<input class="pw" type="password" name="pw" placeholder="비밀번호">
+					</div>
+				</div>
+
+				<div class="log_in_out_area">
+					<button type="submit" class="login_btn">로그인</button>
+					<button type="button" onclick="location.href='/sign_up_form'" class="sign_up_btn">회원가입</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+</html>

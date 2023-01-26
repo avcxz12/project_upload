@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/body_only_layout}">
+
+<!-- <th:block layout:fragment="content">  -->
+
+
+<div layout:fragment="content">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+	<script th:inline="javascript">
+
+		$(document).ready(function () {
+			var errorMessage = [[${errorMessage}]];
+			if (errorMessage != null) {
+				alert(errorMessage);
+			}
+		});
+	</script>
+	<div class="sign_up">
+		<img class="sign_up_logo" src="/img/logo.png" onclick="location.href='/'">
+		<div class="sign_up_form">
+
+			<form action="/User/sign_up" method="post" th:object="${userDTO}">
+				<div class="sign_up_area">
+
+					<div class="name_area">
+						<i class="fa-solid fa-user fa-2x fa-fw"></i>
+						<input type="text" name="user_name" placeholder="이름" th:field="*{name}">
+						<div class="error">
+							<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="fieldError">error!</p>
+						</div>
+					</div><br>
+
+					<div class="id_area">
+						<i class="fa-solid fa-envelope fa-2x fa-fw"></i>
+						<input type="text" name="user_id" placeholder="아이디" th:field="*{id}">
+						<div>
+							<p th:if="${#fields.hasErrors('id')}" th:errors="*{id}" class="fieldError">error!</p>
+						</div>
+					</div><br>
+
+					<div class="pw_area">
+						<i class="fa-solid fa-lock fa-2x fa-fw"></i>
+						<input type="password" name="user_pw1" placeholder="비밀번호" th:field="*{pw}">
+						<div>
+							<p th:if="${#fields.hasErrors('pw')}" th:errors="*{pw}" class="fieldError">error!</p>
+						</div>
+					</div><br>
+
+					<div class="phone_area">
+						<i class="fa-solid fa-mobile-screen fa-2x fa-fw"></i>
+						<input type="text" name="user_phone" placeholder="전화번호입력" th:field="*{phone}">
+						<div>
+							<p th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="fieldError">error!</p>
+						</div>
+					</div><br>
+
+					<div class="address_area">
+						<i class="fa-solid fa-location-dot fa-2x fa-fw"></i>
+						<input type="text" name="user_address" placeholder="주소" th:field="*{address}">
+						<div>
+							<p th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="fieldError">error!
+							</p>
+						</div>
+					</div><br>
+
+				</div>
+
+				<div class="sign_up_agree">
+					<button type="submit" id="sign_up_btn">회원가입</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+</html>

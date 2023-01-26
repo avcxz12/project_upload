@@ -1,0 +1,281 @@
+@charset "UTF-8";
+
+*
+{
+	box-sizing: border-box;
+  	padding:0;margin:0;
+  	text-decoration:none;
+}
+
+
+li
+{
+	list-style:none
+}
+
+.menu {
+  width: 1200px;
+  overflow: hidden;
+	margin:auto;
+}
+
+.menu > li {
+  width: 240px; /*20*5=100%*/
+  float: left;
+  text-align: center;
+  line-height: 40px;
+  background-color: #0000ff;
+}
+
+.menu a {
+  color: #fff;
+}
+
+.submenu > li {
+  line-height: 50px;
+  background-color: #0000ff;
+  width:240px;		/*메인메뉴 li에 호버시에 밑에 출력되는 submenu li 가 가로 240px를 가지고있음*/
+  
+}
+
+.submenu {
+  height: 0; /*ul의 높이를 안보이게 처리*/
+  overflow: hidden;
+  width:240px;
+  position:absolute;
+  z-index:1;
+}
+
+
+
+.menu > li:hover {
+  background-color: #94a9ff;
+  transition-duration: 0.5s;
+}
+
+.menu > li:hover .submenu {
+  height: 250px; /*서브메뉴 li한개의 높이 50*5*/
+  transition-duration: 1s;
+}
+	
+.submenu >li:hover
+{
+	width:240px;
+	background-color: #94a9ff;
+  	transition-duration: 0.5s;
+}
+
+/*
+	 ↑ 메인메뉴 css 
+	 ↓ 배너 부분 css
+	 */
+.banner{
+	width:1200px;
+	height: 650px;
+	margin:auto;
+}
+.autoSlides{
+	white-space:nowrap;
+	overflow:hidden;
+	width:1200px;
+	height: 500px;
+	
+}
+.slides{
+		margin-left:-2px;
+		margin-right:-3px;
+}
+
+.bannerimg{
+	width:1200px;
+	height: 500px;
+	margin:0px; padding:0px;
+}
+.banner .slides{
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	width:1200px;
+	transition:all .35s;
+}
+.banner .slides label{
+	position: absolute;
+	z-index:1;
+	top:50%;
+	transform:translateY(50%);
+	cursor:pointer;
+}
+label.left{
+	left:20px;
+	background-position: center center;
+	background-size: 50%;
+	background-repeat: no-repeat;
+}
+label.right{
+	left:20px;
+	background-position: center center;
+	background-size: 50%;
+	background-repeat: no-repeat;
+}
+
+@keyframes slide01{
+	0%{left:0%;}
+	18%{left:0%;}
+	20%{left:-100%;}
+	38%{left:-100%;}
+	40%{left:-200%;}
+	58%{left:-200%;}
+	60%{left:-300%;}
+	78%{left:-300%;}
+	80%{left:-400%;}
+	98%{left:-400%;}
+	100%{left:0%;}
+}
+@keyframes slide02{
+	0%{left:0%;}
+	18%{left:0%;}
+	20%{left:-100%;}
+	38%{left:-100%;}
+	40%{left:-200%;}
+	58%{left:-200%;}
+	60%{left:-300%;}
+	78%{left:-300%;}
+	80%{left:100%;}
+	98%{left:100%;}
+	100%{left:0%;}
+}
+@keyframes slide03{
+	0%{left:0%;}
+	18%{left:0%;}
+	20%{left:-100%;}
+	38%{left:-100%;}
+	40%{left:-200%;}
+	58%{left:-200%;}
+	60%{left:200%;}
+	78%{left:200%;}
+	80%{left:100%;}
+	98%{left:100%;}
+	100%{left:0%;}
+}
+@keyframes slide04{
+	0%{left:0%;}
+	18%{left:0%;}
+	20%{left:-100%;}
+	38%{left:-100%;}
+	40%{left:300%;}
+	58%{left:300%;}
+	60%{left:200%;}
+	78%{left:200%;}
+	80%{left:100%;}
+	98%{left:100%;}
+	100%{left:0%;}
+}
+
+@keyframes slide05{
+	0%{left:0%;}
+	18%{left:0%;}
+	20%{left:400%;}
+	38%{left:400%;}
+	40%{left:300%;}
+	58%{left:300%;}
+	60%{left:200%;}
+	78%{left:200%;}
+	80%{left:100%;}
+	98%{left:100%;}
+	100%{left:0%;}
+}
+[id="slide01"]:checked~.autoSlides .slides{transform:translateX(0); 
+animation:slide01 7s infinite; }
+[id="slide02"]:checked~.autoSlides .slides{transform:translateX(-100%); 
+animation:slide02 7s infinite; }
+[id="slide03"]:checked~.autoSlides .slides{transform:translateX(-200%); 
+animation:slide03 7s infinite; }
+[id="slide04"]:checked~.autoSlides .slides{transform:translateX(-300%); 
+animation:slide04 7s infinite;}
+[id="slide05"]:checked~.autoSlides .slides{transform:translateX(-400%); 
+animation:slide05 7s infinite;}
+
+.controll{
+	height: 100px;
+}
+.img1{
+	width:300px;height:100px;
+	position: absolute;
+	margin:0px; padding:0px;
+	 vertical-align: bottom;
+	 
+}
+.img2{
+	width:240px;height:100px;
+	position: absolute;
+	padding:0px;
+	margin-left:-5px;
+	 vertical-align: bottom;
+}
+.img3{
+	width:240px;height:100px;
+	position: absolute;
+	padding:0px;
+	margin-left:-6px;
+	 vertical-align: bottom;
+}
+.banner input{
+    margin:0; padding:0;
+            appearance:none;
+}
+.banner input:checked + .test01{
+            filter: none;
+           
+}
+
+.test01{
+    cursor:pointer;
+    background-size:contain;
+    background-repeat:no-repeat;
+    display:inline-block;
+    position: relative; 
+    height: 100px;
+	width: 240px; 
+}
+.test01:hover{
+    border: solid 3px black;
+}
+.test02{
+    cursor:pointer;
+    background-size:contain;
+    background-repeat:no-repeat;
+    display:inline-block;
+    margin-left:-5px;
+    position: relative; 
+    height: 100px;
+	width: 240px; 
+}
+.test02:hover{
+    border: solid 3px black;
+}
+.test03{
+    cursor:pointer;
+    background-size:contain;
+    background-repeat:no-repeat;
+    display:inline-block;
+    position: relative; 
+    margin-left:-6px;
+    height: 100px;
+	width: 240px; 
+}
+.test03:hover{
+    border: solid 3px black;
+}
+.test04{
+    cursor:pointer;
+    background-size:contain;
+    background-repeat:no-repeat;
+    display:inline-block;
+    position: relative; 
+    margin-left:-7px;
+    height: 100px;
+	width: 240px; 
+}
+.test04:hover{
+    border: solid 3px black;
+}

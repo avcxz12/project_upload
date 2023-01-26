@@ -1,0 +1,90 @@
+@charset "utf-8";
+
+.sign_up {
+	position: absolute;
+	width: 700px;
+	height: 700px;
+	top: 60%;
+	left: 50%;
+	transform: translate(-50%, -75%);
+}
+
+.fieldError {
+	position: relative;
+	color: #bd2130;
+}
+
+.sign_up_logo {
+	position: relative;
+	left: 50%;
+	transform: translate(-50%, 10%);
+}
+
+.sign_up_form {
+	position: relative;
+	left: 50%;
+	transform: translate(-40%, 20%);
+}
+
+.enter_information {
+	position: relative;
+	left: 50%;
+	transform: translate(-50%, -370%);
+	font-size: 20px;
+}
+
+.sign_up_area {
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-63%, -20%);
+}
+
+.sign_up_area>* {
+	position: relative;
+	left: 15%;
+	transform: translate(-55%, 0);
+}
+
+.sign_up_area>div {
+	width: 500px;
+	height: 100px;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+
+.sign_up_area>div>input {
+	width: 400px;
+	height: 50px;
+}
+
+.fieldError {
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-40%, -30%);
+}
+
+i {
+	z-index: 1;
+}
+
+.sign_up_area>label>input {
+	width: 500px;
+	height: 50px;
+}
+
+#sign_up_btn {
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-72%, -225%);
+	background-color: rgb(0, 155, 255);
+	width: 500px;
+	height: 50px;
+	border: none;
+	color: white;
+	font-weight: bold;
+}

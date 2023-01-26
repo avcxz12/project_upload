@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/pull_layout}">
+
+<div layout:fragment="content">
+<div class="inquiry_response" th:each="inlist : ${ansList}">
+
+	<h1>답변완료</h1>
+	<div class="writer">
+	<span th:text="${inlist.userid}" class="writer_text"></span>
+		
+	</div>
+	<div class="title">
+	<div class="type_select">
+	<span th:text="${inlist.type}" class="type_style" ></span>
+		</div>
+		<label>문의 제목 <span th:text="${inlist.title}" class="title_style" ></span>
+		</label>
+	</div>
+	<div class="contents">
+	<div class="contents_inquiry">
+	
+	문의 번호 : <span th:text="${inlist.inquiryseq}"></span>
+	문의 날짜:  <span th:text="${inlist.inquiry_date}" class="day_style" ></span>
+	<p>문의 내용</p>
+	<span th:text="${inlist.content}" class="content_style"></span>
+	
+	</div>
+	<span th:text="${inlist.answer}" class="contents_text"></span>
+	</div>
+</div>
+
+</div>

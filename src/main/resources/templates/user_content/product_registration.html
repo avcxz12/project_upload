@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/body_only_layout}">
+<div layout:fragment="content">
+	<div class="reg_main">
+		<div class="reg_set">
+			<div class="reg_search">
+				<form action="/Product/shoping_main" method="post">
+					<input type="text" class="reg_bar" name="reg_bar" placeholder="제목과 사이즈를 입력해주세요.">
+				</form>
+			</div>
+			<div class="reg_tool">
+				<div class="reg_tool_input">
+					<form action="/Product/shoping_main" method="post">
+						<select class="reg_tool_input_1">
+							<option selected>메인메뉴</option>
+							<option>가전</option>
+							<option>생필품</option>
+							<option>운동기구</option>
+							<option>식품</option>
+							<option>패션</option>
+						</select>
+					</form>
+
+					<form action="/Product/shoping_main" method="post">
+						<select class="reg_tool_input_1">
+							<option selected>서브메뉴</option>
+							<option>가전</option>
+							<option>생필품</option>
+							<option>운동기구</option>
+							<option>식품</option>
+							<option>패션</option>
+						</select>
+					</form>
+
+				</div>
+				<div class="reg_number_area">
+					<div class="reg_number">
+						<form action="/Product/shoping_main" method="post" class="form_margin">
+							<input type="number" class="num_input" name="reg_price" placeholder="가격을 입력해주세요.">
+						</form>
+					</div>
+					<div class="reg_number">
+						<form action="/Product/shoping_main" method="post" class="form_margin">
+							<input type="number" class="num_input" name="reg_amount" placeholder="수량을 적어주세요.">
+						</form>
+					</div>
+					<div class="img_input">
+						<label for="ex_file">업로드</label> <input name="uploadFiles" type="file" multiple id="ex_file"
+							class="img_btn">
+						<button class="uploadBtn">Upload</button>
+					</div>
+
+				</div>
+			</div>
+
+
+
+		</div>
+		<div class="product_Introduce">
+			<form action="/Product/shoping_main" method="post" class="form_margin">
+				<textarea class="introduce_area" name="reg_amount">
+				</textarea>
+				<button type="submit" class="introduce_btn">등록</button>
+			</form>
+		</div>
+
+	</div>
+
+</div>
+
+</html>

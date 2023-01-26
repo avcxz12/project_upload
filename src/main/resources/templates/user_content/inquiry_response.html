@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/pull_layout}" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<div layout:fragment="content">
+	<form action="/User/inquiry_post" method="post" enctype="multipart/form-data">
+		<div class="inquiry_response">
+			<h1>문의하기</h1>
+			<div class="writer">
+				<input th:value="${userid}" name="userid" class="writer_text" readonly>
+			</div>
+			<div class="title">
+				<div class="type_select">
+				<div th:if="${apply}">
+				<input type="text" name="type" value="판매자 신청" readonly/>
+				</div>
+				<div th:unless="${apply}">
+					<select class="type_style" name="type">
+						<option>주문취소/환불</option>
+						<option>기타 문의</option>
+					</select>
+				</div>
+				</div>
+				<div th:if="${apply}">
+				<div class="title_text">
+				<input type="text" name="title" th:value="${userid}" readonly class="user_apply" >
+				<input type="text" name="title" value="판매자 신청합니다." readonly class="user_apply">
+				</div>
+				</div>
+				<div th:unless="${apply}">
+				<input type="text" name="title" placeholder="제목을 입력해주세요" class="title_text">
+				</div>
+
+			</div>
+			<div class="contents">
+			<div th:if="${apply}">
+			<div class="contents_text">
+			<p>사업자등록번호와 판매자의 이름 전화번호를 입력해주세요.</p>
+			<input type="text" name="content" value="사업자번호" readonly class="fixing"/>
+			<input type="number" name="content" placeholder="사업자 번호 입력해주세요." class="apply_input"/>
+			<input type="text" name="content" value="성명" readonly class="fixing"/>
+			<input type="text" name="content" placeholder="성명을 입력해주세요." class="apply_input"/>
+			<input type="text" name="content" value="전화번호" readonly class="fixing"/>
+			<input type="text" name="content" placeholder="전화번호 입력해주세요." class="apply_input"/>
+			</div>
+			</div>
+			<div th:unless="${apply}">
+				<input type="text" name="content" placeholder="내용을 입력해주세요" class="contents_text">
+				</div>
+			
+			<div class="btn_click">
+				<button type="submit" class="inquiry_btn" >작성하기</button>
+				<button type="button" class="can_btn" onclick="location.href ='/User/inquiry_form'">취소</button>
+			</div>
+		</div>
+		</div>
+	</form>
+	
+
+</div>

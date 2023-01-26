@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/body_only_layout}">
+
+<div layout:fragment="content">
+
+	<div class="modify">
+		<div class="modify_form">
+			<div class="modify_form_header">
+				<h1>회원정보수정</h1>
+			</div>
+			<form action="/User/modify" method="post">
+				<div class="modify_form_area">
+					<div class="modify_form_user_id">
+						<i class="fa-solid fa-envelope fa-2x fa-fw"></i> <input type="text" th:value=${userid}
+							th:name="id" readonly><br />
+					</div>
+					<div class="modify_form_user_name">
+						<i class="fa-solid fa-user fa-2x fa-fw"></i> <input type="text" name="name_ch"
+							placeholder="이름 변경 테스트"><br />
+					</div>
+					<div class="modify_form_user_pw">
+						<i class="fa-solid fa-lock fa-2x fa-fw"></i> <input type="text" name="pw"
+							placeholder="현재 비밀번호 테스트"><br />
+					</div>
+					<div class="modify_form_user_pw">
+						<i class="fa-solid fa-lock fa-2x fa-fw"></i> <input type="password" name="pw_ch"
+							placeholder="비번 변경 테스트"><br />
+					</div>
+					<div class="modify_form_user_phone">
+						<i class="fa-solid fa-mobile-screen fa-2x fa-fw"></i> <input type="text" name="phone_ch"
+							placeholder="폰 변경 테스트"><br />
+					</div>
+					<div class="modify_form_user_address">
+						<i class="fa-solid fa-location-dot fa-2x fa-fw"></i> <input type="text" name="add_ch"
+							placeholder="주소 변경 테스트"><br />
+					</div>
+
+				</div>
+				<div class="modify_form_btn">
+				<button type="submit">등록</button>
+				<button onclick="location.href ='/'">취소</button>
+			</div>
+			</form>
+			
+		</div>
+	</div>
+</div>
+
+</html>

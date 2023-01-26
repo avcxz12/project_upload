@@ -1,0 +1,86 @@
+@charset "UTF-8";
+
+.kakao_detail {
+	position: absolute;
+	width: 1000px;
+	height: 600px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.kakao_detail_form {
+	position: relative;
+	width: 950px;
+	height: 400px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.kakao_detail_daytime {
+	position: relative;
+	width: 950px;
+	height: 80px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -276%);
+	line-height: 35px;
+	border: 1px solid #c0c0c0;
+}
+
+.kakao_detail_img {
+	position: relative;
+	width: 250px;
+	height: 250px;
+	top: 50%;
+	transform: translate(10%, -70%);
+	border: 1px solid black;
+	line-height:50px;
+	border-right: none;
+}
+
+.kakao_detail_img>img{
+	position: relative;
+	width: 250px;
+	height: 250px;
+	top: 50%;
+	transform: translate(0, -50%);
+}
+
+.kakao_detail_tid {
+	position: relative;
+	width: 600px;
+	height: 83px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-33%, -510%);
+	border: 1px solid black;
+	border-left: none;
+	line-height:50px;
+	border-bottom: none;
+}
+
+.kakao_detail_title {
+	position: relative;
+	width: 600px;
+	height: 83px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-33%, -517%);
+	line-height:50px;
+	border-right: 1px solid black;
+}
+
+.kakao_detail_title_price {
+	position: relative;
+	width: 600px;
+	height: 83px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-33%, -510%);
+	line-height:50px;
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+}
+

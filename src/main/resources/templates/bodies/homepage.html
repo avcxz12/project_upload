@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/pull_layout}">
+
+<!-- <th:block layout:fragment="content">  -->
+<div layout:fragment="content">
+
+	<ul class="menu">
+		<li><a href="/Product/findmainmenu?mainmenu=exercise">운동</a>
+			<ul class="submenu">
+				<li><a href="/Product/findmainmenu?mainmenu=exercise1">운동 전</a></li>
+				<li><a href="/Product/findmainmenu?mainmenu=exercise2">운동 중</a></li>
+				<li><a href="/Product/findmainmenu?mainmenu=exercise3">운동 후</a></li>
+
+			</ul></li>
+		<li><a href="/Product/findmainmenu?mainmenu=vitamin">비타민&필수</a>
+			<ul class="submenu">
+				<li><a href="/Product/findsubmenu?submenu=종합비타민">종합비타민</a></li>
+				<li><a href="/Product/findsubmenu?submenu=비타민">비타민</a></li>
+				<li><a href="/Product/findsubmenu?submenu=오메가">오메가</a></li>
+			</ul></li>
+		<li><a href="/Product/findmainmenu?mainmenu=shaker">쉐이커</a>
+			<ul class="submenu">
+				<li><a href="/Product/findsubmenu?submenu=쉐이커">쉐이커</a></li>
+				<li><a href="/Product/findsubmenu?submenu=물통">물통</a></li>
+				<li><a href="/Product/findsubmenu?submenu=브러쉬">브러쉬</a></li>
+			</ul></li>
+		<li><a href="/Product/findmainmenu?mainmenu=other_list">용품</a>
+			<ul class="submenu">
+				<li><a href="/Product/findsubmenu?submenu=리프팅벨트">리프팅벨트</a></li>
+				<li><a href="/Product/findsubmenu?submenu=스트랩그립'">스트랩&그립</a></li>
+				<li><a href="/Product/findsubmenu?submenu=헬스 용품">헬스 용품</a></li>
+			</ul></li>
+		<li><a href="/Product/findmainmenu?mainmenu=etc">그 외</a>
+			<ul class="submenu">
+				<li><a href="/Product/findsubmenu?submenu=태닝/프로팅">다이어트</a></li>
+				<li><a href="/Product/findsubmenu?submenu=스테미너">스테미너</a></li>
+				<li><a href="/Product/findsubmenu?submenu=간건강밀크시슬">간건강 / 밀크시슬</a></li>
+			</ul></li>
+
+	</ul>
+
+	<div class="banner">
+		<input type="radio" name="slide" id="slide01" value="click1"
+			checked="checked"> <input type="radio" name="slide"
+			id="slide02" value="click2"> <input type="radio" name="slide"
+			id="slide03" value="click3"> <input type="radio" name="slide"
+			id="slide04" value="click4"> <input type="radio" name="slide"
+			id="slide05" value="click5">
+		<ul class="autoSlides">
+			<li class="slides" id="slides1"><label for="slide05"
+				class="left"></label> <label for="slide02" class="right"></label> <img
+				class="bannerimg" src="/img/protin_b.png"></li>
+			<li class="slides"><label for="slide01" class="left"></label> <label
+				for="slide03" class="right"></label> <img class="bannerimg"
+				src="/img/daily.png"></li>
+			<li class="slides"><label for="slide02" class="left"></label> <label
+				for="slide01" class="right"></label> <img class="bannerimg"
+				src="/img/gko.png"></li>
+			<li class="slides"><label for="slide03" class="left"></label> <label
+				for="slide05" class="right"></label> <img class="bannerimg"
+				src="/img/sweetshop.png"></li>
+			<li class="slides"><label for="slide04" class="left"></label> <label
+				for="slide01" class="right"></label> <img class="bannerimg"
+				src="/img/water.png"></li>
+		</ul>
+		<div class="controll">
+			<img class="img1" src="/img/protin.png"> <label
+				class="test01 slide01" for="slide01"></label> <img class="img2"
+				src="/img/daily.png"> <label class="test02 slide02"
+				for="slide02"></label> <img class="img2" src="/img/gko.png"> <label
+				class="test02 slide03" for="slide03"></label> <img class="img3"
+				src="/img/sweetshop.png"> <label class="test03 slide04"
+				for="slide04"></label> <img class="img3" src="/img/water.png">
+			<label class="test04 slide05" for="slide05"></label>
+		</div>
+	</div>
+	</div>
+
+
+</html>

@@ -1,0 +1,169 @@
+@charset "UTF-8";
+
+.mypage_form {
+	position: relative;
+	width: 1200px;
+	height: 100%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+
+.mypage_header_btn {
+	position: relative;
+	width: 240px;
+	height: 200px;
+	text-align: center;
+	line-height: 190px;
+	border: 1px solid white;
+	color: white;
+	background-color: #0000ff;
+}
+
+.mypage_order_list {
+	position: relative;
+	width: 240px;
+	height: 200px;
+	text-align: center;
+	line-height: 200px;
+	left: 50%;
+	transform: translate(-150%, -100%);
+	font-weight: normal;
+	border: 1px solid white;
+	background-color: #00ffff;
+	border: 1px solid white;
+}
+
+.mypage_cancel_return {
+	position: relative;
+	width: 240px;
+	height: 200px;
+	text-align: center;
+	line-height: 200px;
+	left: 50%;
+	transform: translate(-50%, -200%);
+	line-height: 200px;
+	border: 1px solid white;
+	background-color: #00ffff;
+}
+
+.mypage_inquiry {
+	position: relative;
+	width: 240px;
+	height: 200px;
+	text-align: center;
+	line-height: 200px;
+	left: 50%;
+	transform: translate(50%, -300%);
+	border: 1px solid white;
+	background-color: #00ffff;
+}
+
+.mypage_receipt {
+	position: relative;
+	width: 240px;
+	height: 200px;
+	text-align: center;
+	line-height: 200px;
+	left: 50%;
+	transform: translate(150%, -400%);
+	border: 1px solid white;
+	background-color: #00ffff;
+}
+
+a:hover {
+	color: blue;
+	text-decoration: underline;
+}
+
+.cancellation_header {
+	position: absolute;
+	width: 950px;
+	height: 100px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -75%);
+	line-height: 80px;
+	padding: 10px;
+	border-bottom: 1px solid black;
+}
+
+.cancellation_return {
+	position: relative;
+	width: 1200px;
+	height: 220px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -318.5%);
+}
+
+.cancellation_return_receipt_date {
+	position: relative;
+	width: 1200px;
+	height: 70px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -158%);
+	border: 1px solid black;
+	background-color:#c0c0c0;
+	border-bottom:none;
+}
+
+.cancellation_return_receipt_date>p {
+	float: left;
+	line-height:70px;
+	font-size:large;
+	font-weight: 900;
+	padding: 0 15px;
+}
+
+.cancellation_return_product{
+	position:relative;
+	width:1200px;
+	height: 150px;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-75%);
+	border:1px solid #c0c0c0;
+	border-top: none;
+}
+
+.cancellation_return_product_name{
+	position:relative;
+	width:750px;
+	height:150px;
+	top:50%;
+	transform:translate(0,-50%);
+}
+
+.cancellation_return_product_name>ul{
+	text-align:center;
+	line-height:30px;
+}
+
+.cancellation_return_product_count_price{
+	position:relative;
+	width:200px;
+	height: 150px;
+	top:50%;
+	left:50%;
+	transform:translate(75%,-150%);
+	font-weight: 900;
+	text-align:center;
+	padding : 50px 0;
+	border-left: 1px solid #c0c0c0;
+	border-right: 1px solid #c0c0c0;
+	
+}
+
+.cancellation_return_product_return{
+	position:relative;
+	width:250px;
+	height: 150px;
+	top:50%;
+	left:50%;
+	display: flex;
+	align-items:center;
+	justify-content:center;
+	transform:translate(140%,-250%);
+}

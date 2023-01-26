@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	layout:decorate="~{layouts/pull_layout}">
+
+<div layout:fragment="content">
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+	<div class="mypage">
+		<div class="mypage_form">
+
+			<!-- 헤더 부분 시작 -->
+			<div class="mypage_header">
+				<div th:if="!${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
+				<div class="mypage_header_btn">
+					<h1>My Page</h1>
+				</div>
+				<div class="mypage_order_list" onclick="location.href ='/mypage'">
+					<p class="mypage_btn">주문내역</p>
+				</div>
+				<div class="mypage_cancel_return" onclick="location.href ='/User/inquiry_form'">
+					<p class="mypage_btn">문의하기(취소 / 기타)</p>
+				</div>
+				<div class="mypage_inquiry" onclick="location.href ='/Payment/basket_form'">
+					<p class="mypage_btn">장바구니</p>
+				</div>
+				</div>
+			<th:block sec:authorize="hasRole('ADMIN')">
+			<div class="mypage_header_btn">
+					<h1>관리 게시판</h1>
+				</div>
+				<div class="mypage_order_list" onclick="location.href ='/User/admin_form'" >		
+					<p class="mypage_btn">판매자 신청게시판</p>	
+				</div>
+				<div class="mypage_cancel_return" onclick="location.href ='/User/inquiry_form'">
+					<p class="mypage_btn">문의글 보기(취소 / 기타)</p>
+				</div>
+			</th:block>
+			</div>
+
+			<!-- 헤더 부분 끝 -->
+			<!-- 바디 시작 -->
+
+			<div class="mypage_order">
+				<div class="order_header">
+					<h1>주문 목록</h1>
+				</div>
+
+
+
+				<!-- 반복문 시작 -->
+				<div class="mypage_order_delivery" th:each="KList:${KList}">
+					<div class="order_delivery">
+						<p class="order_date" th:text="${KList.daytime}"></p>
+					</div>
+					<div class="mypage_order_details">
+						<div class="mypage_order_details_img">
+							<img th:src="${KList.img}" >
+						</div>
+						<div class="mypage_order_details_product_name">
+							<p>상품이름:</p>
+							<p th:text="${KList.title}" >상품이름</p>
+						</div>
+						<div class="mypage_order_details_product">
+							<p th:text="${KList.price}">상품가격</p>
+							<br>
+							<p th:text="${KList.eaa}" >상품수량</p>
+
+						</div>
+						<div class="mypage_order_details_btn">
+
+							<a href="#pop1" class="btn">상세보기
+							<img th:src="${KList.img}" id="in_img"  style="visibility: hidden">
+							<p th:text="${KList.title}" id="title" style="visibility: hidden"></p>
+							<p th:text="${KList.price}" id="price" style="visibility: hidden"></p>
+							<p th:text="${KList.eaa}" id="ea" style="visibility: hidden"></p>
+							</a>
+
+
+
+							<!-- <form th:action="@{/Payment/kakaopay_detail.cls}" method="post"
+								class="mypage_order_details_btn1">
+								<input type="text" name="tid" th:value="${KList.tid}"
+									style="visibility: hidden">
+								<button type="submit"
+									onclick="window.open('/open_win/view_details','window_name','width=430,height=500,location=no,status=no,scrollbars=yes');">상세보기</button>
+							</form>
+
+ -->
+							<!--  -->
+							<form th:action="@{/Payment/kakaocancel.cls}" method="post"
+								class="mypage_order_details_btn2">
+								<input type="text" name="tid" th:value="${KList.tid}" style="visibility: hidden"> <input
+									type="number" name="price" th:value="${KList.price}" style="visibility: hidden">
+								<button type="submit">결제취소</button>
+							</form>
+
+						</div>
+						<!-- 
+						<script>
+									var kakao_detail = (e) =>
+								{
+									var tid = $(e).find('.kakaopay_tid').val();
+									var price = $(e).find('.kakaopay_price').val();
+									
+									
+									$.ajax({
+											url:'/Payment/kakaocancel.cls',
+											data:{tid:tid,price:price},
+											success:function(data)
+												{
+												  	alert(data.method_result_message);
+												  	alert(data.method_result_code);
+												},
+												error:function(error)
+												{
+													alert("결제취소 url 연결에 실패하였습니다.");
+												}
+											})
+								
+								
+								};
+							</script>
+ -->
+					</div>
+				</div>
+				<script>
+				$(function() {
+					$(".btn").click(function() {
+						var in_img = $(this).find('#in_img').attr("src");
+						var title = $(this).find('#title').text();
+						var price = $(this).find('#price').text();
+						var ea = $(this).find('#ea').text();
+						console.log(in_img)
+						console.log(title)
+						console.log(price)
+						console.log(ea)
+
+                      $('.kimg').attr("src",in_img);
+						$(".ktitle").val(title);
+						$(".kprice").val(price);
+						$(".kEA").val(ea);
+					})
+				});
+			</script>
+				<div class="popup" id="pop1">
+								<a href="#a">닫기</a><br>
+								<img class="kimg" src="kimg">
+								<input class="ktitle" type="text" value="" ><br>
+								<input class="kprice" type="text" value="" >원<br>
+								<input class="kEA" type="text" value="" >개<br>
+							</div>
+
+				<!-- 반복문 끝 -->
+
+			</div>
+
+			<!-- 바디부분 끝 -->
+		</div>
+	</div>
+</div>

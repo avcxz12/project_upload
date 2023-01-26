@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/pull_layout}">
+
+<div layout:fragment="content">
+<form th:action="@{/User/inquiry_answer}" method="post">
+<div class="inquiry_response" th:each="inlist : ${ansList}">
+
+	<h1>답변하기</h1>
+	<div class="writer">
+		<input th:value="${inlist.userid}" name="id" class="writer_text" readonly>
+	</div>
+	<div class="title">
+	<div class="type_select">
+	<input th:value="${inlist.type}" name="type" class="type_style" readonly>
+		</div>
+		<label>문의 제목 <input th:value="${inlist.title}" name="title" class="title_style" readonly>
+		</label>
+	</div>
+	<div class="contents" >
+	<div class="contents_inquiry">
+	<p>문의 번호 : <input th:value="${inlist.inquiryseq}" name="number" readonly></p>
+	문의 날짜:  <input th:value="${inlist.inquiry_date}" name="day" class="day_style" readonly>
+	<p>문의 내용</p> 
+	<input th:value="${inlist.content}" name="content" class="content_style" readonly>
+	
+	</div>
+		<input type ="text" name="answer" placeholder="답변내용을 입력해주세요." class="contents_text">
+	</div>
+		<button type="submit" class="inquiry_btn" onclick="location.href ='/User/inquiry_answer'">작성하기</button >
+</div>
+</form>
+gd
+</div>

@@ -1,0 +1,301 @@
+@charset "UTF-8";
+
+.mypage_form {
+	position: aelative;
+	width: 1200px;
+	height: 100%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+
+.mypage_header {
+	position: relative;
+	width: 1200px;
+	height: 200px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-40%, 0);
+}
+
+.mypage_header_btn {
+	position: relative;
+	width: 240px;
+	height: 200px;
+	text-align: center;
+	line-height: 190px;
+	border: 1px solid white;
+	color: white;
+	background-color: #0000ff;
+}
+
+.mypage_order_list {
+	position: relative;
+	width: 240px;
+	height: 200px;
+	text-align: center;
+	line-height: 200px;
+	left: 50%;
+	transform: translate(-150%, 0);
+	font-weight: normal;
+	border: 1px solid white;
+	background-color: #00ffff;
+	border: 1px solid white;
+}
+
+.mypage_header>div :hover {
+	background-color: blue;
+	cursor: pointer;
+}
+
+.mypage_header>div>p:hover {
+	color: white;
+}
+
+.mypage_cancel_return {
+	position: relative;
+	width: 240px;
+	height: 200px;
+	text-align: center;
+	line-height: 200px;
+	left: 50%;
+	transform: translate(-50%, -200%);
+	line-height: 200px;
+	border: 1px solid white;
+	background-color: #00ffff;
+}
+
+.mypage_inquiry {
+	position: relative;
+	width: 240px;
+	height: 200px;
+	text-align: center;
+	line-height: 200px;
+	left: 50%;
+	transform: translate(50%, -300%);
+	border: 1px solid white;
+	background-color: #00ffff;
+}
+
+.mypage_btn {
+	font-size: 20px;
+	font-weight: 900px;
+	color: #000000;
+}
+a:hover {
+	color: blue;
+	text-decoration: underline;
+}
+.apply_btn{
+	width:230px;
+	height:200px;
+	float:left;
+}
+
+.order_header {
+	position: relative;
+	width: 950px;
+	height: 100px;
+	left: 50%;
+	transform: translate(-50%, 0);
+	line-height: 80px;
+	padding: 10px;
+	border-bottom: 1px solid black;
+}
+
+.mypage_order_delivery {
+	position: relative;
+	width: 950px;
+	height: 300px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, 0);
+	border: 1px solid #c0c0c0;
+}
+
+.order_delivery {
+	position: relative;
+	width: 1200px;
+	height: 100px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -225%);
+}
+
+.order_date {
+	position: relative;
+	width: 900px;
+	height: 50px;
+	float: left;
+	font-weight: 900;
+	font-size: x-large;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, 100%);
+}
+
+.order_details {
+	position: relative;
+	width: 130px;
+	height: 100px;
+	line-height: 110px;
+	font-weight: 700;
+	font-size: large;
+	text-align: right;
+}
+
+.mypage_order_details {
+	position: relative;
+	width: 900px;
+	height: 200px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -90%);
+	border: 1px solid #c0c0c0;
+}
+
+.mypage_order_details>* {
+	border: 1px solid #c0c0c0;
+}
+
+.order_delivery>p {
+	vertical-align: middle;
+}
+
+.mypage_order_details_img {
+	position: relative;
+	width: 150px;
+	height: 150px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-279%, -50%);
+}
+
+.mypage_order_details_img>img {
+	width: 150px;
+	height: 150px;
+}
+
+.mypage_order_details_product_name {
+	position: relative;
+	width: 500px;
+	height: 75px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-53.6%, -300%);
+	border-bottom: none;
+	border-left: none;
+	text-align: left;
+}
+
+.mypage_order_details_product {
+	position: relative;
+	width: 500px;
+	height: 75px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-53.6%, -300%);
+	border-top: none;
+	border-left: none;
+	text-align: justify;
+}
+
+.mypage_order_details_product>button {
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(240%, -175%);
+	width: 100px;
+	height: 50px;
+	border: none;
+	color: white;
+	font-weight: bold;
+	background-color: rgb(0, 155, 255);
+	cursor: pointer;
+}
+
+.mypage_order_details_product>button:hover {
+	background-color: blue;
+}
+
+.mypage_order_details_btn {
+	position: relative;
+	width: 200px;
+	height: 150px;
+	top: 50%;
+	left: 50%;
+	transform: translate(116%, -250%);
+}
+
+.mypage_order_details_btn2>button {
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -60%);
+	width: 200px;
+	height: 75px;
+	border: none;
+	color: white;
+	font-weight: bold;
+	background-color: rgb(0, 155, 255);
+	cursor: pointer;
+}
+
+.mypage_order_details_btn2>button:hover {
+	background-color: blue;
+}
+
+.btn {
+	display: block;
+	width: 200px;
+	height: 75px;
+	background: rgb(0, 155, 255);
+	text-decoration: none;
+	text-align: center;
+	line-height: 70px;
+	color: #fff;
+}
+
+.popup {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-150%, -50%);
+	width: 500px;
+	height: 500px;
+	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0, 5);
+	border-radius: 5px;
+	text-align: center;
+	padding: 20px;
+	box-sizing: border-box;
+	border: 1px solid black;
+	opacity: 0;
+	transition: all 0.5s;
+	background-color: white;
+}
+
+.popup a {
+	color: grey;
+	text-decoration: none;
+}
+
+.popup:target {
+	opacity: 100;
+}
+
+.popup>img {
+	position: relative;
+	width: 250px;
+	height: 250px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-90%, -85%);
+}
+
+.popup>input{
+	position: relative;
+	line-height: 50px;
+	width:300px;
+	border:none;
+	text-align: right;
+}
